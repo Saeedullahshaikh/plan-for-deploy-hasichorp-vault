@@ -1,0 +1,40 @@
+                   Internet
+                      |
+             (Internal Load Balancer)
+                      |
+                VPC Private Subnet(s)
+   +------------------------------------------------+
+   | Bastion Host (SSH for Admin Ops)               |
+   |                                                |
+   |   +-----------+   +-----------+   +-----------+|
+   |   | Vault-1   |   | Vault-2   |   | Vault-3   ||
+   |   | (Leader)  |   | (Follower)|   | (Follower)||
+   |   |           |   |           |   |           ||
+   |   +-----------+   +-----------+   +-----------+|
+   |        \               |               /       |
+   |         \---- Raft Replication ----------/     |
+   +------------------------------------------------+
+                      |
+               AWS IAM Role Access
+                      |
+            +----------------------+
+            | AWS KMS  🔑 (Auto-Unseal) |
+            +----------------------+
+                    
+Step 1: Create a 3-Node Vault Cluster for High Availability
+We will create 3 EC2 instances and configure them as a Vault cluster with three nodes: Vault-1, Vault-2, and Vault-3.
+If one Vault server goes down, the other two automatically handle the system.
+This ensures that our Vault system is never fully shut down and provides high availability for production workloads.
+
+Step 2: Store Vault Data in Raft
+Vault secrets will be stored using Raft storage, which is a built-in storage method:
+One node acts as the leader, where data is primarily stored.
+The other two nodes replicate this data so that all nodes have the same information.
+Benefit: If one server crashes, the other nodes still have the data, ensuring data consistency and reliability.
+
+Step 3: Auto-Unseal Vault Using AWS KMS
+When Vault starts, it is initially sealed, requiring unseal keys to unlock it.
+Normally, we would need to manually enter 3 unseal keys, which is time-consuming.
+To automate this, we use AWS KMS to securely store unseal keys.
+When Vault starts, it automatically retrieves the keys from AWS KMS and unseals itself.
+Benefit: This is secure, efficient, and reduces manual intervention.
