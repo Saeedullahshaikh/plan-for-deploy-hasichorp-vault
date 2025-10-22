@@ -1,7 +1,7 @@
 # HashiCorp Vault — Production Architecture & Deployment Guide.
 
 ##  Architecture Overview
-<img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/32c7aa93-b4e5-4f73-922f-d53264056336" />
+
 
 ##Overview
 This production-grade HashiCorp Vault deployment is designed for high availability, fault tolerance, and end-to-end security in AWS. It leverages a 5-node Vault cluster using Raft Integrated Storage, distributed across three Availability Zones (2-2-1 node setup) to tolerate up to two node failures and survive an entire AZ outage.
