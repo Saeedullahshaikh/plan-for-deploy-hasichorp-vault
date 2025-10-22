@@ -12,8 +12,7 @@ Synchronous Raft replication with automatic leader election
 Secure inter-node communication via mTLS
 Storage & Backup:
 EBS volumes provide encrypted storage for data and audit logs
-Daily snapshots can be pushed to S3 for disaster recovery
-This design ensures scalable, self-healing operations, strict security controls, and production-ready resilience.
+Daily snapshots can be pushed to S3 for disaster recovery.
 
 ###  Design Goals
 1. **N+2 Redundancy:** 5 Vault nodes tolerate 2 node failures  
