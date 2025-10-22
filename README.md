@@ -1,4 +1,4 @@
-# HashiCorp Vault — Production Architecture & Deployment Guide
+# HashiCorp Vault — Production Architecture & Deployment Guide.
 
 ##  Architecture Overview
 
