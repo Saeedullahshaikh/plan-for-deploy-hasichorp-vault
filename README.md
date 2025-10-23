@@ -1,6 +1,7 @@
 # HashiCorp Vault — Production Architecture & Deployment Guide.
 
 ##  Architecture Overview
+![Uploading image.png…]()
 
 
 ##Overview
