@@ -1,8 +1,6 @@
 # HashiCorp Vault — Production Architecture & Deployment Guide.
 
 ##  Architecture Overview
-<img width="14972" height="7028" alt="image" src="https://github.com/user-attachments/assets/b04b5980-7b26-4c6a-a6e1-4a4572ef15fe" />
-
 
 
 ##Overview
